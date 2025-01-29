@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
+import 'categories.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -106,7 +108,13 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CategoriesPage()),
+                      );
+                    },
                     style: TextButton.styleFrom(
                       foregroundColor: Colors.green,
                     ),
@@ -132,11 +140,11 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     _offerCard("Up to 20% OFF", "On your first order",
-                        "assets/offer.png"),
+                        "assets/offer.png", context),
                     _offerCard("Buy 1 Get 1 Free", "Limited time offer",
-                        "assets/offer1.png"),
+                        "assets/offer1.png", context),
                     _offerCard("Free Delivery", "On orders above \$20",
-                        "assets/offer2.png"),
+                        "assets/offer2.png", context),
                   ],
                 ),
               ),
@@ -274,7 +282,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _offerCard(String title, String subtitle, String assetPath) {
+  Widget _offerCard(
+      String title, String subtitle, String assetPath, BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       padding: const EdgeInsets.all(16),
@@ -283,29 +292,54 @@ class _HomePageState extends State<HomePage> {
         color: Colors.green,
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(color: Colors.black54),
+                    ),
+                  ],
                 ),
-                Text(
-                  subtitle,
-                  style: const TextStyle(color: Colors.black54),
+              ),
+              Image.asset(assetPath, width: 50, height: 50),
+            ],
+          ),
+          const SizedBox(height: 8),
+          SizedBox(
+            width: 60,
+            height: 20,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.green,
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
-              ],
+              ),
+              child: const Text(
+                "Order Now",
+                style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
-          Image.asset(assetPath, width: 50, height: 50),
         ],
       ),
     );
