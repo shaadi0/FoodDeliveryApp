@@ -12,11 +12,7 @@ class BurgersPage extends StatelessWidget {
       'image': 'assets/Indian-Spiced-Burger.jpg',
       'price': 3.99
     },
-    {
-      'name': 'Beyond Burger',
-      'image': 'assets/Beyond-Burger.jpg',
-      'price': 5.49
-    },
+    {'name': 'Beyond Burger', 'image': 'assets/Beyond-Burger.jpg', 'price': 6},
     {
       'name': 'Big Mac Burger',
       'image': 'assets/Big-Mac-Burger.jpg',
@@ -30,7 +26,7 @@ class BurgersPage extends StatelessWidget {
     {
       'name': 'Burger King Whopper',
       'image': 'assets/Burger-King-Whopper.jpg',
-      'price': 5.49
+      'price': 5
     },
   ];
 
