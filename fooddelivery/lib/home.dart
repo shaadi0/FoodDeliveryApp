@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'burger.dart';
 import 'categories.dart';
+import 'favorite.dart';
 import 'mycart.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   File? _profileImage;
-  String _selectedCategory = "Pizza";
+  String _selectedCategory = "Burger";
   int _selectedIndex = 0;
 
   Future<void> _selectProfileImage() async {
@@ -116,8 +117,8 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    _categoryButton("Pizza", "assets/pizza.png"),
                     _categoryButton("Burger", "assets/burger.png"),
+                    _categoryButton("Pizza", "assets/pizza.png"),
                     _categoryButton("Pasta", "assets/pasta.png"),
                     _categoryButton("Chips", "assets/chips.png"),
                   ],
@@ -249,6 +250,13 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(builder: (context) => MyCartPage()),
                 );
                 break;
+
+              case 3:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FavoritesPage()),
+                );
+                break;
             }
           }),
     );
@@ -325,7 +333,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Text(
                       subtitle,
-                      style: const TextStyle(color: Colors.black54),
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255)),
                     ),
                   ],
                 ),
