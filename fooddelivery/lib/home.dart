@@ -147,7 +147,13 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FavoritesPage()),
+                      );
+                    },
                     child: const Text("See All",
                         style: TextStyle(color: Colors.green)),
                   ),
