@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
+import 'burger.dart';
 import 'categories.dart';
 
 class HomePage extends StatefulWidget {
@@ -254,6 +255,12 @@ class _HomePageState extends State<HomePage> {
         setState(() {
           _selectedCategory = name;
         });
+        if (name == "Burger") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BurgersPage()),
+          );
+        }
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 5),
