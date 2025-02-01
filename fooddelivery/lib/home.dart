@@ -5,7 +5,9 @@ import 'dart:io';
 import 'burger.dart';
 import 'categories.dart';
 import 'favorite.dart';
+import 'msg.dart';
 import 'mycart.dart';
+import 'profile.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -256,11 +258,23 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(builder: (context) => MyCartPage()),
                 );
                 break;
+              case 2:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MessagesPage()),
+                );
+                break;
 
               case 3:
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => FavoritesPage()),
+                );
+                break;
+              case 4:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()),
                 );
                 break;
             }
