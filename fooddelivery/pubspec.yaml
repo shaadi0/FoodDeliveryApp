@@ -81,6 +81,7 @@ flutter:
     - assets/Big-Mac-Burger.jpg
     - assets/Black-Bean-Burgers.jpg
     - assets/Burger-King-Whopper.jpg
+    - assets/visa.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

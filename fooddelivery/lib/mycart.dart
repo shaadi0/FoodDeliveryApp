@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'success.dart';
+import 'pay.dart';
 
 class MyCartPage extends StatefulWidget {
   @override
@@ -122,7 +122,7 @@ class _MyCartPageState extends State<MyCartPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SuccessScreen()),
+                  MaterialPageRoute(builder: (context) => PaymentPage()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -137,7 +137,7 @@ class _MyCartPageState extends State<MyCartPage> {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: const Color.fromARGB(255, 254, 254, 254),
                 ),
               ),
             )
