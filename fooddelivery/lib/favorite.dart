@@ -53,9 +53,9 @@ class FavoritesPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
                       favorite["image"]!,
-                      width: 80, // Set fixed width
-                      height: 80, // Set fixed height
-                      fit: BoxFit.cover, // Keep aspect ratio
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   const SizedBox(width: 12),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-
 import 'burger.dart';
 import 'categories.dart';
 import 'favorite.dart';
@@ -71,12 +70,13 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextField(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: TextField(
                 decoration: InputDecoration(
                   hintText: "Search",
                   prefixIcon: const Icon(
@@ -91,57 +91,63 @@ class _HomePageState extends State<HomePage> {
                   fillColor: Colors.grey[200],
                 ),
               ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: const Text(
                     "Categories",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CategoriesPage()),
-                      );
-                    },
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.green,
-                    ),
-                    child: const Text("See All"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CategoriesPage()),
+                    );
+                  },
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.green,
                   ),
+                  child: const Text("See All"),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  _categoryButton("Burger", "assets/burger.png"),
+                  _categoryButton("Pizza", "assets/pizza.png"),
+                  _categoryButton("Pasta", "assets/pasta.png"),
+                  _categoryButton("Chips", "assets/chips.png"),
                 ],
               ),
-              const SizedBox(height: 10),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    _categoryButton("Burger", "assets/burger.png"),
-                    _categoryButton("Pizza", "assets/pizza.png"),
-                    _categoryButton("Pasta", "assets/pasta.png"),
-                    _categoryButton("Chips", "assets/chips.png"),
-                  ],
-                ),
+            ),
+            const SizedBox(height: 20),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  _offerCard("Up to 20% OFF", "On your first order",
+                      "assets/offer.png", context),
+                  _offerCard("Buy 1 Get 1 Free", "Limited time offer",
+                      "assets/offer1.png", context),
+                  _offerCard("Free Delivery", "On orders above \$20",
+                      "assets/offer2.png", context),
+                ],
               ),
-              const SizedBox(height: 20),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    _offerCard("Up to 20% OFF", "On your first order",
-                        "assets/offer.png", context),
-                    _offerCard("Buy 1 Get 1 Free", "Limited time offer",
-                        "assets/offer1.png", context),
-                    _offerCard("Free Delivery", "On orders above \$20",
-                        "assets/offer2.png", context),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              Row(
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
@@ -156,12 +162,18 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => FavoritesPage()),
                       );
                     },
-                    child: const Text("See All",
-                        style: TextStyle(color: Colors.green)),
+                    child: const Text(
+                      "See All",
+                      style: TextStyle(color: Colors.green),
+                    ),
                   ),
                 ],
               ),
-              GridView.builder(
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -205,13 +217,14 @@ class _HomePageState extends State<HomePage> {
                     },
                   ];
                   return _favoriteCard(
-                      favoriteItems[index]['name']!,
-                      favoriteItems[index]['image']!,
-                      favoriteItems[index]['price']);
+                    favoriteItems[index]['name']!,
+                    favoriteItems[index]['image']!,
+                    favoriteItems[index]['price'],
+                  );
                 },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

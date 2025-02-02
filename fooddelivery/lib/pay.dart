@@ -132,7 +132,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white, // ✅ White button text
+                    color: Colors.white,
                   ),
                 ),
               ),

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'mgs1.dart';
+
 class MessagesPage extends StatelessWidget {
   final List<Message> messages = [
     Message("Anila", "Your order has delivered", "2 min ago",
-        "assets/anila.jpg", Colors.green),
+        "assets/anila.jpeg", Colors.green),
     Message(
-        "Anusha", "Hello!", "10 min ago", "assets/anusha.jpg", Colors.green),
+        "Anusha", "Hello!", "10 min ago", "assets/anusha.jpeg", Colors.green),
     Message("Rashid Ali", "Your order is confirmed", "2:00 pm",
-        "assets/rashid.jpg", Colors.black),
+        "assets/rashid.jpeg", Colors.black),
     Message(
-        "Reena", "Lorem ipsum", "1:30 am", "assets/reena.jpg", Colors.green),
+        "Teena", "Lorem ipsum", "1:30 am", "assets/teena.jpeg", Colors.green),
   ];
 
   @override
@@ -17,6 +19,7 @@ class MessagesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Messages"),
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -43,11 +46,32 @@ class MessagesPage extends StatelessWidget {
               ),
               trailing:
                   Text(message.time, style: TextStyle(color: Colors.grey)),
+              onTap: () {
+                handleNavigation(context, message.name);
+              },
             ),
           );
         },
       ),
     );
+  }
+
+  void handleNavigation(BuildContext context, String name) {
+    switch (name) {
+      case "Anila":
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => ChatScreen()),
+        );
+        break;
+      case "Anusha":
+        break;
+      case "Rashid Ali":
+      case "Teena":
+        break;
+      default:
+        break;
+    }
   }
 }
 
